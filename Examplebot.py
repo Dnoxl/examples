@@ -310,14 +310,15 @@ def run():
     with open(Path(sys.path[0], 'bot.log'), 'a', encoding='utf-8') as f:
         f.write(f"\n\n-----{time.strftime('%Y-%m-%d %H:%M:%S', time.localtime(time.time()))}-----\n")
     settings = Settings()
-    for extension in bot_extensions:     
-        bot.load_extension(extension)
+    if bot_extensions:
+        for extension in bot_extensions:     
+            bot.load_extension(extension)
     bot.run(settings.bottoken)
 
 global bot_starttime, bot_status, bot_extensions
 bot_starttime = time.perf_counter()
 bot_status = "YOUR CUSTOM STATUS"
-bot_extensions = ('extensionfolder.extension')
+#bot_extensions = ('extensionfolder.extension')
 
 #Declare all necessary Variables before this
 run()
